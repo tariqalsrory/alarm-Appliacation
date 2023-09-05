@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>المنبه</title>
+</head>
+<body>
+    <div >
+    <h1>المنبه</h1>
+    <input type="number" id="secondsInput" placeholder="عدد الثواني">
+    <button onclick="startAlarm()">بدء</button>
+    <button onclick="stopAlarm()">إيقاف</button>
+    </div>
+    <script>
+        var countdownInterval;
+        var secondsRemaining;
+
+        function startAlarm() {
+            var seconds = parseInt(document.getElementById("secondsInput").value);
+            if (!isNaN(seconds)) {
+                secondsRemaining = seconds;
+                countdownInterval = setInterval(updateCountdown, 1000);
+            }
+        }
+
+        function stopAlarm() {
+            clearInterval(countdownInterval);
+            secondsRemaining = 0;
+            alert("تم إيقاف المنبه");
+        }
+
+        function updateCountdown() {
+            if (secondsRemaining > 0) {
+                secondsRemaining--;
+                console.log(secondsRemaining);
+            } else {
+                clearInterval(countdownInterval);
+                alert("انتهى الوقت! المنبه");
+            }
+        }
+    </script>
+</body>
+</html>
